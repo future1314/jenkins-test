@@ -18,7 +18,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'Test...'
+                sh 'echo "Test..."'
             }
         }
         stage('pre-deploy-confirm') {
@@ -28,7 +28,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'Deploy...'
+                sh 'echo "Deploy..."'
             }
         }
     }
