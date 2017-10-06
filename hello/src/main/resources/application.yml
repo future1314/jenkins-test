@@ -1,0 +1,12 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: hello
+  jpa:
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+    show-sql: true
+  datasource:
+    platform: h2
