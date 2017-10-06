@@ -3,8 +3,15 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn --version'
             }
+	    steps {
+		sh 'echo "Hello, Jenkins."'
+		sh '''
+		    echo "Hello, again, Jenkins."
+		    ls -lah
+		'''
+	    }
         }
     }
 }
