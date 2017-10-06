@@ -1,10 +1,15 @@
 pipeline {
     agent { docker 'maven:3.3.3' }
+
+    environment {
+        WORLD="Jenkins"
+    }
+
     stages {
         stage('build') {
             steps {
                 sh 'mvn --version'
-		sh 'echo "Hello, Jenkins."'
+		sh 'echo "Hello, ${WORLD}."'
 		sh '''
 		    echo "Hello, again, Jenkins."
 		    ls -lah
@@ -12,6 +17,7 @@ pipeline {
 	    }
         }
     }
+
     post {
         always {
             echo 'This will always run'
