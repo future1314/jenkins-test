@@ -9,19 +9,33 @@ pipeline {
         stage('build') {
             steps {
                 sh 'mvn --version'
-		sh 'echo "Hello, ${WORLD}."'
-		sh '''
-		    echo "Hello, again, Jenkins."
-		    ls -lah
-		'''
-	    }
+		        sh 'echo "Hello, ${WORLD}."'
+		        sh '''
+		            echo "Hello, again, Jenkins."
+		            ls -lah
+		        '''
+	        }
+        }
+        stage('test') {
+            steps {
+                sh 'Test...'
+            }
+        }
+        stage('pre-deploy-confirm') {
+            steps {
+                input 'Please confirm whether to proceed deployment.'
+            }
+        }
+        stage('deploy') {
+            steps {
+                sh 'Deploy...'
+            }
         }
     }
 
     post {
         always {
             echo 'This will always run'
-            junit 'target/surefire-reports/*.xml'
         }
         success {
             echo 'This will run only if successful'
